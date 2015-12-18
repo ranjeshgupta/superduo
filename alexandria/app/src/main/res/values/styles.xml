@@ -1,8 +1,55 @@
 <resources>
 
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+    <style name="style_edittext_barcode">
+        <item name="android:inputType">number</item>
+        <item name="android:minEms">8</item>
+        <item name="android:saveEnabled">true</item>
+        <item name="android:maxLength">13</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:paddingEnd">20dp</item>
+        <item name="android:hint">@string/input_hint</item>
+    </style>
+    
+    <style name="style_image_view">
+        <item name="android:scaleType">fitXY</item>
+    </style>
+
+    <style name="style_tv">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textIsSelectable">true</item>
+    </style>
+
+    <style name="style_tv_headline" parent="style_tv">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginStart">20sp</item>
+    </style>
+
+    <style name="style_tv_subhead" parent="style_tv">
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:maxLines">5</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="style_tv_authors" parent="style_tv">
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">start|left</item>
+    </style>
+
+    <style name="style_tv_categories" parent="style_tv">
+        <item name="android:gravity">end|right</item>
+    </style>
+
 
 </resources>

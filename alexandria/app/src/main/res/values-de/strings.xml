@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about">Über diese App</string><string name="about_text">Diese Anwendung erhält Buchinformationen aus einem Google -API. Alle Titel , Bilder decken , und Autoreninformationen von dort kommen .
+        Die ursprüngliche Version dieser App wurde von Sascha Jaschke gebaut ,
+        und diese Version wird von Ranjesh Kumar Gupta modifiziert. Dieses Projekt ist ein Teil der Udacity Android Nanodegree Programm .</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="action_share">Aktie</string>
+    <string name="barcode_error">"Fehler beim Lesen der Strichcode: %1$s"</string>
+    <string name="barcode_failure">Kein Barcode erfasst</string>
+    <string name="barcode_success">Barcode erfolgreich gelesen</string>
+    <string name="books">Liste der Bücher</string>
+    <string name="cancel_button">Absagen</string>
+    <string name="delete">Buch löschen</string>
+    <string name="detail">buchen Details</string>
+    <string name="ean_invalid">Bitte geben Sie eine gültige EAN 13 Code, um zu suchen Buch.</string>
+    <string name="ean_required">Bitte geben Sie EAN 13 Code, um zu suchen Buch.</string>
+    <string name="hint_search_book">Suche Buch</string>
+    <string name="input_hint">Legen ISBN-13. Nur Ziffern.</string>
+    <string name="low_storage_error">Gesichtsdetektor Abhängigkeiten kann nicht aufgrund der geringen Gerätespeicher heruntergeladen werden</string>
+    <string name="navigation_drawer_close">Schließen Navigation Schublade</string>
+    <string name="navigation_drawer_open">Öffnen Navigation Schublade</string>
+    <string name="no_camera_permission">Diese Anwendung kann nicht ausgeführt werden , weil es nicht die Kamera Berechtigung haben. Die Anwendung wird nun beendet.</string>
+    <string name="no_network">Kein Buch Informationen verfügbar. Das Netzwerk ist nicht verfügbar für Buch zu holen.</string>
+    <string name="not_found">Kein Buch gefunden</string>
+    <string name="ok">OK</string>
+    <string name="ok_button">Nächster</string>
+    <string name="permission_camera_rationale">Zugriff auf die Kamera zur Detektion benötigt</string>
+    <string name="pref_startScreen">Startbildschirm auswählen</string>
+    <string name="scan">Scan / hinzufügen buchen</string>
+    <string name="scan_button">Scannen Sie einen Barcode</string>
+    <string name="search">Suche</string>
+    <string name="server_down">Kein Buch Informationen verfügbar. Der Server ist nicht die Rückgabe von Daten.</string>
+    <string name="server_error">Kein Buch Informationen verfügbar. Der Server wird nicht wieder gültige Daten . Bitte prüfen Sie nach einer aktualisierten Version von Alexandria.</string>
+    <string name="share_text">Ein Muss Buch lesen :</string>
+    <string name="title_activity_settings">Einstellungen</string>
+</resources>

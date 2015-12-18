@@ -1,6 +1,5 @@
 package it.jaschke.alexandria;
 
-import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -24,12 +23,26 @@ public class ListOfBooks extends Fragment implements LoaderManager.LoaderCallbac
 
     private BookListAdapter bookListAdapter;
     private ListView bookList;
-    private int position = ListView.INVALID_POSITION;
-    private EditText searchText;
+    private int mPosition = ListView.INVALID_POSITION;
+    private static final String mPositionStateKey = "position";
+    private EditText mSearchText;
+    private final String SEARCH_CONTENT="searchContent";
 
     private final int LOADER_ID = 10;
 
     public ListOfBooks() {
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if(mSearchText!=null) {
+            outState.putString(SEARCH_CONTENT, mSearchText.getText().toString());
+        }
+
+        if (mPosition != ListView.INVALID_POSITION) {
+            outState.putInt(mPositionStateKey, mPosition);
+        }
     }
 
     @Override
@@ -51,7 +64,7 @@ public class ListOfBooks extends Fragment implements LoaderManager.LoaderCallbac
 
         bookListAdapter = new BookListAdapter(getActivity(), cursor, 0);
         View rootView = inflater.inflate(R.layout.fragment_list_of_books, container, false);
-        searchText = (EditText) rootView.findViewById(R.id.searchText);
+        mSearchText = (EditText) rootView.findViewById(R.id.searchText);
         rootView.findViewById(R.id.searchButton).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -70,24 +83,37 @@ public class ListOfBooks extends Fragment implements LoaderManager.LoaderCallbac
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 Cursor cursor = bookListAdapter.getCursor();
                 if (cursor != null && cursor.moveToPosition(position)) {
+                    mPosition = position;
                     ((Callback)getActivity())
-                            .onItemSelected(cursor.getString(cursor.getColumnIndex(AlexandriaContract.BookEntry._ID)));
+                            .onItemSelected(
+                                    cursor.getString(cursor.getColumnIndex(AlexandriaContract.BookEntry._ID)),
+                                     cursor.getString(cursor.getColumnIndex(AlexandriaContract.BookEntry.TITLE))
+                            );
                 }
             }
         });
 
-        return rootView;
-    }
+        // set the title of the mainactivity toolbar
+        getActivity().setTitle(R.string.books);
 
-    private void restartLoader(){
-        getLoaderManager().restartLoader(LOADER_ID, null, this);
+        //on rotate
+        if(savedInstanceState!=null){
+            mSearchText.setText(savedInstanceState.getString(SEARCH_CONTENT));
+            restartLoader();
+
+            if (savedInstanceState.containsKey(mPositionStateKey)) {
+                mPosition = savedInstanceState.getInt(mPositionStateKey);
+            }
+        }
+
+        return rootView;
     }
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 
         final String selection = AlexandriaContract.BookEntry.TITLE +" LIKE ? OR " + AlexandriaContract.BookEntry.SUBTITLE + " LIKE ? ";
-        String searchString =searchText.getText().toString();
+        String searchString = mSearchText.getText().toString();
 
         if(searchString.length()>0){
             searchString = "%"+searchString+"%";
@@ -114,8 +140,8 @@ public class ListOfBooks extends Fragment implements LoaderManager.LoaderCallbac
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         bookListAdapter.swapCursor(data);
-        if (position != ListView.INVALID_POSITION) {
-            bookList.smoothScrollToPosition(position);
+        if (mPosition != ListView.INVALID_POSITION) {
+            bookList.smoothScrollToPosition(mPosition);
         }
     }
 
@@ -124,9 +150,8 @@ public class ListOfBooks extends Fragment implements LoaderManager.LoaderCallbac
         bookListAdapter.swapCursor(null);
     }
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        activity.setTitle(R.string.books);
+    private void restartLoader(){
+        getLoaderManager().restartLoader(LOADER_ID, null, this);
     }
+
 }

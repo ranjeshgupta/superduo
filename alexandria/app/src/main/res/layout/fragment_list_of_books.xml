@@ -1,11 +1,21 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="it.jaschke.alexandria.ListOfBooks">
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="it.jaschke.alexandria.ListOfBooks"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
+    android:layout_marginTop="@dimen/activity_vertical_margin"
+    android:layout_marginBottom="@dimen/activity_vertical_margin"
+    android:layout_marginStart="@dimen/activity_horizontal_margin"
+    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+    >
 
     <RelativeLayout
         android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="center_horizontal|top">
         <ImageButton
             android:layout_width="wrap_content"
@@ -20,9 +30,10 @@
             android:layout_alignParentEnd="true"/>
 
         <EditText
-            android:layout_width = "fill_parent"
+            android:layout_width = "match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/searchText"
+            android:contentDescription="@string/hint_search_book"
             android:inputType="text"
             android:saveEnabled="true"
             android:layout_marginTop="10dp"
@@ -30,22 +41,27 @@
             android:layout_toLeftOf="@+id/searchButton"
             android:layout_toStartOf="@+id/searchButton"
             android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginRight="10dp"
+            android:layout_marginEnd="10sp"
             android:layout_marginBottom="10dp"/>
 
 
         <ListView android:id="@+id/listOfBooks"
-                  android:layout_width="match_parent"
-                  android:layout_height="match_parent"
-                  android:layout_alignParentLeft="true"
-                  android:layout_marginLeft="0dp"
-                  android:layout_below="@+id/searchText"
-                  android:layout_alignRight="@id/searchButton"
-                  android:layout_alignParentRight="true"
-                  android:layout_alignParentStart="true"
-                  android:layout_toRightOf="@id/searchButton"/>
-
-
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginStart="0dp"
+            android:layout_below="@+id/searchText"
+            android:layout_alignRight="@id/searchButton"
+            android:layout_alignEnd="@+id/searchButton"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_toRightOf="@id/searchButton"
+            android:layout_toEndOf="@+id/searchButton"
+            />
 
     </RelativeLayout>
 

@@ -21,6 +21,7 @@ import java.net.URL;
 
 import it.jaschke.alexandria.MainActivity;
 import it.jaschke.alexandria.R;
+import it.jaschke.alexandria.Utility;
 import it.jaschke.alexandria.data.AlexandriaContract;
 
 
@@ -91,6 +92,11 @@ public class BookService extends IntentService {
 
         bookEntry.close();
 
+        if (!Utility.isNetworkAvailable(this)) {
+            sendIntentMessage(getResources().getString(R.string.no_network));
+            return;
+        }
+
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String bookJsonString = null;
@@ -125,11 +131,13 @@ public class BookService extends IntentService {
             }
 
             if (buffer.length() == 0) {
+                sendIntentMessage(getResources().getString(R.string.server_down));
                 return;
             }
             bookJsonString = buffer.toString();
-        } catch (Exception e) {
+        } catch (IOException e) {
             Log.e(LOG_TAG, "Error ", e);
+            sendIntentMessage(getResources().getString(R.string.server_down));
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
@@ -162,9 +170,7 @@ public class BookService extends IntentService {
             if(bookJson.has(ITEMS)){
                 bookArray = bookJson.getJSONArray(ITEMS);
             }else{
-                Intent messageIntent = new Intent(MainActivity.MESSAGE_EVENT);
-                messageIntent.putExtra(MainActivity.MESSAGE_KEY,getResources().getString(R.string.not_found));
-                LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(messageIntent);
+                sendIntentMessage(getResources().getString(R.string.not_found));
                 return;
             }
 
@@ -198,6 +204,7 @@ public class BookService extends IntentService {
 
         } catch (JSONException e) {
             Log.e(LOG_TAG, "Error ", e);
+            sendIntentMessage(getResources().getString(R.string.server_error));
         }
     }
 
@@ -229,5 +236,11 @@ public class BookService extends IntentService {
             getContentResolver().insert(AlexandriaContract.CategoryEntry.CONTENT_URI, values);
             values= new ContentValues();
         }
+    }
+
+    private void sendIntentMessage(String message){
+        Intent messageIntent = new Intent(MainActivity.MESSAGE_EVENT);
+        messageIntent.putExtra(MainActivity.MESSAGE_KEY, message);
+        LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(messageIntent);
     }
  }

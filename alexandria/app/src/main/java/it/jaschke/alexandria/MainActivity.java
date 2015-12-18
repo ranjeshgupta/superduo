@@ -11,16 +11,16 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import it.jaschke.alexandria.api.Callback;
 
 
-public class MainActivity extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks, Callback {
+public class MainActivity extends AppCompatActivity
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks, Callback, BookDetail.Callbacks {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -30,12 +30,24 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
     /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
-    private CharSequence title;
+    private String mTitle;
+    private static final String mTitleStateKey = "mTitle";
+
+    private String mEan;
+    private static final String mEanStateKey = "mEan";
+
+    private String mBookTitle;
+    private static final String mBookTitleStateKey = "mBookTitle";
+
     public static boolean IS_TABLET = false;
     private BroadcastReceiver messageReciever;
 
     public static final String MESSAGE_EVENT = "MESSAGE_EVENT";
     public static final String MESSAGE_KEY = "MESSAGE_EXTRA";
+
+    public static final int LISTOFBOOKS_FRAGMENT_POS = 0;
+    public static final int ADDBOOK_FRAGMENT_POS = 1;
+    public static final int ABOUT_FRAGMENT_POS = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +58,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
         }else {
             setContentView(R.layout.activity_main);
         }
+        Utility.setupUI(findViewById(R.id.drawer_layout), this);
 
         messageReciever = new MessageReciever();
         IntentFilter filter = new IntentFilter(MESSAGE_EVENT);
@@ -53,11 +66,46 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 
         navigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
-        title = getTitle();
+
+        mTitle = (String) getTitle();
 
         // Set up the drawer.
         navigationDrawerFragment.setUp(R.id.navigation_drawer,
                     (DrawerLayout) findViewById(R.id.drawer_layout));
+
+        //hide keyboard
+        Utility.hideSoftKeyboard(this);
+
+        if (savedInstanceState != null) {
+            if (savedInstanceState.containsKey(mTitleStateKey)) {
+                mTitle = savedInstanceState.getString(mTitleStateKey, null);
+            }
+
+            if (savedInstanceState.containsKey(mEanStateKey)) {
+                mEan = savedInstanceState.getString(mEanStateKey, null);
+            }
+
+            if (savedInstanceState.containsKey(mBookTitleStateKey)) {
+                mBookTitle = savedInstanceState.getString(mBookTitleStateKey, null);
+            }
+
+            // when rotating to landscape booklist on a tablet select the previously selected book
+            if (IS_TABLET && findViewById(R.id.right_container) != null && mTitle.equals(getString(R.string.books)) && mEan != null && mBookTitle != null) {
+                onItemSelected(mEan, mBookTitle);
+                mEan = null;
+                mBookTitle = null;
+            }
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState)
+    {
+        super.onSaveInstanceState(outState);
+
+        outState.putString(mTitleStateKey, mTitle);
+        outState.putString(mEanStateKey, mEan);
+        outState.putString(mBookTitleStateKey, mBookTitle);
     }
 
     @Override
@@ -68,35 +116,42 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 
         switch (position){
             default:
-            case 0:
+            case LISTOFBOOKS_FRAGMENT_POS:
                 nextFragment = new ListOfBooks();
                 break;
-            case 1:
+            case ADDBOOK_FRAGMENT_POS:
                 nextFragment = new AddBook();
                 break;
-            case 2:
+            case ABOUT_FRAGMENT_POS:
                 nextFragment = new About();
                 break;
 
         }
 
+        // if we are on a tablet in landscape mode pop the book detail fragment (in case we have one)
+        if(findViewById(R.id.right_container) != null) {
+            fragmentManager.popBackStack(getString(R.string.detail), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        }
+
         fragmentManager.beginTransaction()
                 .replace(R.id.container, nextFragment)
-                .addToBackStack((String) title)
+                .addToBackStack((String) mTitle)
                 .commit();
+
+        Utility.hideSoftKeyboard(this);
     }
 
     public void setTitle(int titleId) {
-        title = getString(titleId);
+        mTitle = getString(titleId);
     }
 
     public void restoreActionBar() {
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-        actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle(title);
+        if(null != actionBar) {
+            actionBar.setDisplayShowTitleEnabled(true);
+            actionBar.setTitle(mTitle);
+        }
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -122,6 +177,20 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
             startActivity(new Intent(this, SettingsActivity.class));
             return true;
         }
+        else if (item.getItemId() == android.R.id.home) {
+            // hide keyboard when the drawer is opened
+            Utility.hideSoftKeyboard(this);
+
+            // if we are not on a tablet in landscape mode
+            if(findViewById(R.id.right_container) == null) {
+                // if we are coming back from the bookdetail fragment, reset the hamburger
+                if (mTitle.equals(getString(R.string.detail))) {
+                    getSupportFragmentManager().popBackStack();
+                    toggleToolbarDrawerIndicator(false);
+                    return true;
+                }
+            }
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -132,10 +201,15 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
         super.onDestroy();
     }
 
+
     @Override
-    public void onItemSelected(String ean) {
+    public void onItemSelected(String ean, String title) {
+        mEan = ean;
+        mBookTitle = title;
+
         Bundle args = new Bundle();
         args.putString(BookDetail.EAN_KEY, ean);
+        args.putString(BookDetail.TITLE_KEY, title);
 
         BookDetail fragment = new BookDetail();
         fragment.setArguments(args);
@@ -146,9 +220,22 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
         }
         getSupportFragmentManager().beginTransaction()
                 .replace(id, fragment)
-                .addToBackStack("Book Detail")
+                .addToBackStack(getString(R.string.detail))
                 .commit();
 
+        // toggle the hamburger icon for the back icon
+        toggleToolbarDrawerIndicator(true);
+
+        // hide the keyboard when we navigate to the bookdetail fragment
+        Utility.hideSoftKeyboard(this);
+    }
+
+
+    public void toggleToolbarDrawerIndicator(boolean backToHome) {
+        // if we are not on a tablet in landscape mode
+        if(findViewById(R.id.right_container) == null) {
+            navigationDrawerFragment.toggleToolbarDrawerIndicator(backToHome);
+        }
     }
 
     private class MessageReciever extends BroadcastReceiver {
@@ -160,10 +247,6 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
         }
     }
 
-    public void goBack(View view){
-        getSupportFragmentManager().popBackStack();
-    }
-
     private boolean isTablet() {
         return (getApplicationContext().getResources().getConfiguration().screenLayout
                 & Configuration.SCREENLAYOUT_SIZE_MASK)
@@ -172,11 +255,22 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 
     @Override
     public void onBackPressed() {
+
+        // only close the drawer if it's opened
+        if (navigationDrawerFragment.isDrawerOpen()) {
+            navigationDrawerFragment.closeDrawer();
+            return;
+        }
+
+        // if we are coming back from the book detail fragment, reset the hamburger icon
+        if (mTitle.equals(getString(R.string.detail))) {
+            toggleToolbarDrawerIndicator(false);
+        }
+
         if(getSupportFragmentManager().getBackStackEntryCount()<2){
             finish();
         }
         super.onBackPressed();
     }
-
 
 }

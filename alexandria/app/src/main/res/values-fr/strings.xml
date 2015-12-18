@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about">À propos de cette appli</string><string name="about_text">Cette application obtient des informations de livre d\'un API Google . Tous les titres , couvrent images et informations sur l\'auteur viennent de là .
+        La version originale de cette application a été construit par Sascha Jaschke ,
+        et cette version est modifié par Ranjesh Kumar Gupta . Ce projet fait partie du programme Udacity Android Nanodegree .</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="action_share">Partagez</string>
+    <string name="barcode_error">"Erreur lecture code-barres: %1$s"</string>
+    <string name="barcode_failure">N capturé code à barres</string>
+    <string name="barcode_success">Barcode lu avec succès</string>
+    <string name="books">Liste des Livres</string>
+    <string name="cancel_button">Annuler</string>
+    <string name="delete">supprimer le livre</string>
+    <string name="detail">Détail du livre</string>
+    <string name="ean_invalid">S\'il vous plaît entrez valable Code EAN 13 pour Recherche de Livres.</string>
+    <string name="ean_required">S\'il vous plaît entrez le code EAN 13 pour Recherche de Livres.</string>
+    <string name="hint_search_book">Recherche livre</string>
+    <string name="input_hint">Insérer ISBN - 13 . Chiffres seulement .</string>
+    <string name="low_storage_error">Dépendances de détecteur de visage ne ​​peuvent pas être téléchargés en raison de stockage de l\'appareil bas</string>
+    <string name="navigation_drawer_close">Fermer la navigation tiroir</string>
+    <string name="navigation_drawer_open">Ouvrir le tiroir de navigation</string>
+    <string name="no_camera_permission">Cette application ne peut pas fonctionner , car il n\'a pas la permission de la caméra . Cette demande va maintenant quitter .</string>
+    <string name="no_network">Aucune information comptable disponible . Le réseau ne sont pas disponibles pour aller chercher livre.</string>
+    <string name="not_found">Aucun livre trouvé</string>
+    <string name="ok">D\'accord</string>
+    <string name="ok_button">la prochaine</string>
+    <string name="permission_camera_rationale">L\'accès à l\'appareil est nécessaire pour la détection</string>
+    <string name="pref_startScreen">Sélectionnez Écran de démarrage</string>
+    <string name="scan">Numériser / Ajouter un livre</string>
+    <string name="scan_button">Numériser un code à barres</string>
+    <string name="search">Recherche</string>
+    <string name="server_down">Aucune information comptable disponible . Le serveur ne retourne pas de données .</string>
+    <string name="server_error">Aucune information comptable disponible . Le serveur ne retourne pas de données valides . S\'il vous plaît vérifier une version actualisée d\'Alexandrie .</string>
+    <string name="share_text">A doit lire le livre :</string>
+    <string name="title_activity_settings">Paramètres</string>
+</resources>
