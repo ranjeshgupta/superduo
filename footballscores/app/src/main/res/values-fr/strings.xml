@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Football Scores</string>
+    <string name="about">Sur</string><string name="about_text">Cette application se matches de football score de la Premier League , Seria A, Bundesliga , la Primera Division
+        et l\'UEFA Champions League .
+        Toutes les données correspondances sont acquis à partir de l\'API libre football-data.org .
+        Tous les logos de l\'équipe sont acquis à partir http://hdlogo.wordpress.com/ sur demande formulaire d\'autorisation du propriétaire.
+        La version originale de cette application a été créé par Yahia Khalid Ibn El Walid Ahmed ,
+        et cette version est modifié par Ranjesh Kumar Gupta . Ce projet fait partie du programme Udacity Android Nanodegree .
+        \ r\ndurant hors saison , de fausses données seront ajoutées à l\'application .</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="empty_scores_list">Aucune information disponible Scores Football</string>
+    <string name="empty_scores_list_invalid_location">Aucune information scores de football disponibles . L\'emplacement dans les paramètres est pas reconnu par le serveur scores de football.</string>
+    <string name="empty_scores_list_no_network">Aucune information scores de football disponibles . Le réseau ne sont pas disponibles pour récupérer les données et résultats de football.</string>
+    <string name="empty_scores_list_server_down">Aucune information scores de football disponibles. Le serveur ne retourne pas de données.</string>
+    <string name="empty_scores_list_server_error">Aucune information scores de football disponibles . Le serveur ne retourne pas de données valides . S\'il vous plaît vérifier une version à jour des scores de football.</string>
+    <string name="final_text">Final</string>
+    <string name="first_knockout_round_text">Huitièmes de finale</string>
+    <string name="group_stage_text">Phase de groupes, Journée : 6</string>
+    <string name="league_text">Ligue :</string>
+    <string name="league_unknown_text">Non connu Ligue S\'il vous plaît signaler</string>
+    <string name="matchday_text">Jour de match :</string>
+    <string name="quarter_final_text">Quart de finale</string>
+    <string name="semi_final_text">Demi-finale</string>
+    <string name="share_text">Partagez</string>
+    <string name="title_widget_detail">Football Scores Détails</string>
+    <string name="title_widget_today">Football Scores récents</string>
+    <string name="today">Aujourd\'hui</string>
+    <string name="tomorrow">Demain</string>
+    <string name="yesterday">Hier</string>
+</resources>

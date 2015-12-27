@@ -1,4 +1,4 @@
-package barqsoft.footballscores;
+package barqsoft.footballscores.data;
 
 import android.content.ContentResolver;
 import android.net.Uri;
@@ -13,11 +13,15 @@ public class DatabaseContract
     public static final class scores_table implements BaseColumns
     {
         //Table data
-        public static final String LEAGUE_COL = "league";
         public static final String DATE_COL = "date";
         public static final String TIME_COL = "time";
         public static final String HOME_COL = "home";
+        public static final String HOME_ID_COL = "home_id";
+        public static final String HOME_LOGO_COL = "home_logo";
         public static final String AWAY_COL = "away";
+        public static final String AWAY_ID_COL = "away_id";
+        public static final String AWAY_LOGO_COL = "away_logo";
+        public static final String LEAGUE_COL = "league";
         public static final String HOME_GOALS_COL = "home_goals";
         public static final String AWAY_GOALS_COL = "away_goals";
         public static final String MATCH_ID = "match_id";
@@ -43,6 +47,10 @@ public class DatabaseContract
         public static Uri buildScoreWithDate()
         {
             return BASE_CONTENT_URI.buildUpon().appendPath("date").build();
+        }
+
+        public static Uri buildScoreRecent() {
+            return BASE_CONTENT_URI.buildUpon().appendPath("recent").build();
         }
     }
     //URI data

@@ -47,7 +47,7 @@ category#android.intent.category.LAUNCHER
 ADDED from AndroidManifest.xml:20:17
 	android:name
 		ADDED from AndroidManifest.xml:20:27
-provider#barqsoft.footballscores.ScoresProvider
+provider#barqsoft.footballscores.data.ScoresProvider
 ADDED from AndroidManifest.xml:24:9
 	android:authorities
 		ADDED from AndroidManifest.xml:26:13
@@ -67,7 +67,7 @@ ADDED from AndroidManifest.xml:32:13
 		ADDED from AndroidManifest.xml:33:17
 	android:value
 		ADDED from AndroidManifest.xml:34:17
-service#barqsoft.footballscores.service.myFetchService
+service#barqsoft.footballscores.service.MyFetchService
 ADDED from AndroidManifest.xml:36:9
 	android:name
 		ADDED from AndroidManifest.xml:36:18

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Football Scores</string>
+    <string name="about">Etwa</string><string name="about_text">Diese Anwendung bekommen Fußballspielen Score für die Premier League , Seria A , Bundesliga, Primera Division
+        und der UEFA Champions League .
+        Alle Matches Daten werden von football-data.org kostenlose API erworben.
+        Alle Team- Logos aus http://hdlogo.wordpress.com/ auf eine Erlaubnis eingeholt Form der Besitzer erworben.
+        Die ursprüngliche Version dieser App wurde von Yahia Khalid Ibn El Walid Ahmed erstellt ,
+        und diese Version wird von Ranjesh Kumar Gupta modifiziert. Dieses Projekt ist ein Teil der Udacity Android Nanodegree Programm .
+        \r\nIn der Nebensaison , gefälschte Daten an die App hinzugefügt werden.</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="empty_scores_list">Kein Fußballergebnisse Informationen verfügbar</string>
+    <string name="empty_scores_list_invalid_location">Kein Fußballergebnisse Informationen verfügbar. Die Lage in den Einstellungen nicht von der Fußball- Ticker Server nicht erkannt.</string>
+    <string name="empty_scores_list_no_network">Kein Fußballergebnisse Informationen verfügbar. Das Netzwerk ist nicht verfügbar für Fußballergebnisse Daten zu holen.</string>
+    <string name="empty_scores_list_server_down">Kein Fußballergebnisse Informationen verfügbar. Der Server ist nicht die Rückgabe von Daten .</string>
+    <string name="empty_scores_list_server_error">Kein Fußballergebnisse Informationen verfügbar. Der Server wird nicht wieder gültige Daten . Bitte prüfen Sie nach einer aktualisierten Version des Fußballergebnisse .</string>
+    <string name="final_text">Finale</string>
+    <string name="first_knockout_round_text">Achtelfinale</string>
+    <string name="group_stage_text">Gruppenphase, an diesem Spieltag : 6</string>
+    <string name="league_text">Liga :</string>
+    <string name="league_unknown_text">Nicht bekannt Liga Bitte melden</string>
+    <string name="matchday_text">Spieltag :</string>
+    <string name="quarter_final_text">Viertelfinale</string>
+    <string name="semi_final_text">Halbfinale</string>
+    <string name="share_text">Aktie</string>
+    <string name="title_widget_detail">Football Scores Einzelheiten</string>
+    <string name="title_widget_today">Football Scores Neueste</string>
+    <string name="today">Heute</string>
+    <string name="tomorrow">Morgen</string>
+    <string name="yesterday">Gestern</string>
+</resources>

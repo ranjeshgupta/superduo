@@ -2,37 +2,84 @@
 <resources>
 
     <string name="app_name">Football Scores</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="test_text">Test</string>
+    <string name="test_text" translatable="false">Test</string>
+
     <string name="today">Today</string>
     <string name="yesterday">Yesterday</string>
     <string name="tomorrow">Tomorrow</string>
-    <string name="champions_league">UEFA Champions League</string>
-    <string name="bundesliga">Bundesliga</string>
-    <string name="premierleague">Premier League</string>
-    <string name="primeradivison">Primera Division</string>
-    <string name="seriaa">Serie A</string>
-    <string name="matchday_text">Match day</string>
-    <string name="group_stage_text">Group stages</string>
-    <string name="first_knockout_round">First knockout round</string>
-    <string name="quarter_final">Quarter Final</string>
-    <string name="semi_final">Semi Final</string>
+
+    <string name="league_text">League :</string>
+    <string name="league_unknown_text">Not known League Please report</string>
+
+    <string name="group_stage_text">Group Stages, Matchday : 6</string>
+    <string name="first_knockout_round_text">First Knockout round</string>
+    <string name="quarter_final_text">Quarter Final</string>
+    <string name="semi_final_text">Semi Final</string>
     <string name="final_text">Final</string>
+    <string name="matchday_text">Matchday :</string>
+
     <string name="share_text">Share</string>
+
     <string name="about">About</string>
-    <string name="title_activity_about">AboutActivity</string>
-    <string name="about_text">
-        This Application get Football Matches Score for the Premier League,Seria A,Bundesliga,Primera Division
+    <string name="about_text">This Application get Football Matches Score for the Premier League, Seria A, Bundesliga, Primera Division
         and the Uefa Champions League.
         All Matches data are acquired from football-data.org free API.
         All team Logos are acquired from http://hdlogo.wordpress.com/ upon requesting permission form the owner.
-        The original version of this app was created by Yahia Khalid Ibn El Walid Ahmed, and a modified version is given to students in the Udacity Android Nanodegree program.
-        To report any bugs,or suggestions do not hesitate to send a mail to y.k.ibnelwalid@gmail.com.
+        The original version of this app was created by Yahia Khalid Ibn El Walid Ahmed,
+        and this version is modified by Ranjesh Kumar Gupta. This project is a part of Udacity Android Nanodegree program.
+        \r\nDuring the off season, fake data will be added to the app.</string>
 
-        During the off season, fake data will be added to the app.
-    </string>
-    <string name="widget_text">This is a widget probably.</string>
-    <string name="api_key"></string>
-    <string name="dummy_data">{\"timeFrameStart\":\"2015-06-18\",\"timeFrameEnd\":\"2015-06-19\",\"count\":1,\"fixtures\":[{\"_links\":{\"self\":{\"href\":\"http://api.football-data.org/alpha/fixtures/140514\"},\"soccerseason\":{\"href\":\"http://api.football-data.org/alpha/soccerseasons/357\"},\"homeTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/275\"},\"awayTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/263\"}},\"date\":\"2015-06-19T22:00:00Z\",\"status\":\"FINISHED\",\"matchday\":42,\"homeTeamName\":\"TESTING1\",\"awayTeamName\":\"TESTING2\",\"result\":{\"goalsHomeTeam\":2,\"goalsAwayTeam\":4}},{\"_links\":{\"self\":{\"href\":\"http://api.football-data.org/alpha/fixtures/140514\"},\"soccerseason\":{\"href\":\"http://api.football-data.org/alpha/soccerseasons/357\"},\"homeTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/275\"},\"awayTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/263\"}},\"date\":\"2015-06-19T22:00:00Z\",\"status\":\"FINISHED\",\"matchday\":42,\"homeTeamName\":\"TESTING1\",\"awayTeamName\":\"TESTING2\",\"result\":{\"goalsHomeTeam\":2,\"goalsAwayTeam\":4}},{\"_links\":{\"self\":{\"href\":\"http://api.football-data.org/alpha/fixtures/140514\"},\"soccerseason\":{\"href\":\"http://api.football-data.org/alpha/soccerseasons/357\"},\"homeTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/275\"},\"awayTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/263\"}},\"date\":\"2015-06-19T22:00:00Z\",\"status\":\"FINISHED\",\"matchday\":42,\"homeTeamName\":\"TESTING1\",\"awayTeamName\":\"TESTING2\",\"result\":{\"goalsHomeTeam\":2,\"goalsAwayTeam\":4}},{\"_links\":{\"self\":{\"href\":\"http://api.football-data.org/alpha/fixtures/140514\"},\"soccerseason\":{\"href\":\"http://api.football-data.org/alpha/soccerseasons/357\"},\"homeTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/275\"},\"awayTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/263\"}},\"date\":\"2015-06-19T22:00:00Z\",\"status\":\"FINISHED\",\"matchday\":42,\"homeTeamName\":\"TESTING1\",\"awayTeamName\":\"TESTING2\",\"result\":{\"goalsHomeTeam\":2,\"goalsAwayTeam\":4}},{\"_links\":{\"self\":{\"href\":\"http://api.football-data.org/alpha/fixtures/140514\"},\"soccerseason\":{\"href\":\"http://api.football-data.org/alpha/soccerseasons/357\"},\"homeTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/275\"},\"awayTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/263\"}},\"date\":\"2015-06-19T22:00:00Z\",\"status\":\"FINISHED\",\"matchday\":42,\"homeTeamName\":\"TESTING1\",\"awayTeamName\":\"TESTING2\",\"result\":{\"goalsHomeTeam\":2,\"goalsAwayTeam\":4}}]}</string>
+    <string name="api_key" translatable="false">d3d4ddc1772d435aa85b2dc9a5f63cfe</string>
+    <string name="dummy_data" translatable="false">{\"timeFrameStart\":\"2015-06-18\",\"timeFrameEnd\":\"2015-06-19\",\"count\":1,\"fixtures\":[{\"_links\":{\"self\":{\"href\":\"http://api.football-data.org/alpha/fixtures/140514\"},\"soccerseason\":{\"href\":\"http://api.football-data.org/alpha/soccerseasons/357\"},\"homeTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/275\"},\"awayTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/263\"}},\"date\":\"2015-06-19T22:00:00Z\",\"status\":\"FINISHED\",\"matchday\":42,\"homeTeamName\":\"TESTING1\",\"awayTeamName\":\"TESTING2\",\"result\":{\"goalsHomeTeam\":2,\"goalsAwayTeam\":4}},{\"_links\":{\"self\":{\"href\":\"http://api.football-data.org/alpha/fixtures/140514\"},\"soccerseason\":{\"href\":\"http://api.football-data.org/alpha/soccerseasons/357\"},\"homeTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/275\"},\"awayTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/263\"}},\"date\":\"2015-06-19T22:00:00Z\",\"status\":\"FINISHED\",\"matchday\":42,\"homeTeamName\":\"TESTING1\",\"awayTeamName\":\"TESTING2\",\"result\":{\"goalsHomeTeam\":2,\"goalsAwayTeam\":4}},{\"_links\":{\"self\":{\"href\":\"http://api.football-data.org/alpha/fixtures/140514\"},\"soccerseason\":{\"href\":\"http://api.football-data.org/alpha/soccerseasons/357\"},\"homeTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/275\"},\"awayTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/263\"}},\"date\":\"2015-06-19T22:00:00Z\",\"status\":\"FINISHED\",\"matchday\":42,\"homeTeamName\":\"TESTING1\",\"awayTeamName\":\"TESTING2\",\"result\":{\"goalsHomeTeam\":2,\"goalsAwayTeam\":4}},{\"_links\":{\"self\":{\"href\":\"http://api.football-data.org/alpha/fixtures/140514\"},\"soccerseason\":{\"href\":\"http://api.football-data.org/alpha/soccerseasons/357\"},\"homeTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/275\"},\"awayTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/263\"}},\"date\":\"2015-06-19T22:00:00Z\",\"status\":\"FINISHED\",\"matchday\":42,\"homeTeamName\":\"TESTING1\",\"awayTeamName\":\"TESTING2\",\"result\":{\"goalsHomeTeam\":2,\"goalsAwayTeam\":4}},{\"_links\":{\"self\":{\"href\":\"http://api.football-data.org/alpha/fixtures/140514\"},\"soccerseason\":{\"href\":\"http://api.football-data.org/alpha/soccerseasons/357\"},\"homeTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/275\"},\"awayTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/263\"}},\"date\":\"2015-06-19T22:00:00Z\",\"status\":\"FINISHED\",\"matchday\":42,\"homeTeamName\":\"TESTING1\",\"awayTeamName\":\"TESTING2\",\"result\":{\"goalsHomeTeam\":2,\"goalsAwayTeam\":4}}]}</string>
+    
+    <!-- leagues-->
+    <string name="league_bundesliga_1_label" translatable="false">1. Bundesliga</string>
+    <integer name="league_bundesliga_1_code" translatable="false">394</integer>
+    <string name="league_bundesliga_2_label" translatable="false">2. Bundesliga</string>
+    <integer name="league_bundesliga_2_code" translatable="false">395</integer>
+    <string name="league_ligue_1_label" translatable="false">Ligue 1</string>
+    <integer name="league_ligue_1_code" translatable="false">396</integer>
+    <string name="league_ligue_2_label" translatable="false">Ligue 2</string>
+    <integer name="league_ligue_2_code" translatable="false">397</integer>
+    <string name="league_premier_league_label" translatable="false">Premier League</string>
+    <integer name="league_premier_league_code" translatable="false">398</integer>
+    <string name="league_primera_division_label" translatable="false">Primera Division</string>
+    <integer name="league_primera_division_code" translatable="false">399</integer>
+    <string name="league_segunda_division_label" translatable="false">Segunda Division</string>
+    <integer name="league_segunda_division_code" translatable="false">400</integer>
+    <string name="league_serie_a_label" translatable="false">Serie A</string>
+    <integer name="league_serie_a_code" translatable="false">401</integer>
+    <string name="league_primeira_liga_label" translatable="false">Primeira Liga</string>
+    <integer name="league_primeira_liga_code" translatable="false">402</integer>
+    <string name="league_bundesliga_3_label" translatable="false">3. Bundesliga</string>
+    <integer name="league_bundesliga_3_code" translatable="false">403</integer>
+    <string name="league_eredivisie_label" translatable="false">Eredivisie</string>
+    <integer name="league_eredivisie_code" translatable="false">404</integer>
+    <string name="league_champions_league_label" translatable="false">Champions League</string>
+    <integer name="league_champions_league_code" translatable="false">405</integer>
+
+    <string name="api_uri_fixture" translatable="false">http://api.football-data.org/v1/fixtures/</string>
+    <string name="uri_season_link" translatable="false">http://api.football-data.org/v1/soccerseasons/</string>
+    <string name="uri_match_link" translatable="false">http://api.football-data.org/v1/fixtures/</string>
+    <string name="uri_team_link" translatable="false">http://api.football-data.org/v1/teams/</string>
+    <string name="uri_team_path" translatable="false">teams</string>
+
+    <!-- SyncAdapter related -->
+    <string name="sync_account_type" translatable="false">barqsoft.footballscores</string>
+    <string name="content_authority" translatable="false">barqsoft.footballscores</string>
+
+    <!-- Strings related to Widgets -->
+    <string name="title_widget_today">Football Scores Recent</string>
+    <string name="title_widget_detail">Football Scores Details</string>
+
+    <!-- Key name for storing scores status in SharedPreferences -->
+    <string name="pref_scores_status_key" translatable="false">score-status</string>
+
+    <string name="empty_scores_list">No Football Scores Information Available</string>
+    <string name="empty_scores_list_no_network">No Football Scores information available. The network is not available to fetch Football Scores data.</string>
+    <string name="empty_scores_list_server_down">No Football Scores information available. The server is not returning data.</string>
+    <string name="empty_scores_list_server_error">No Football Scores information available. The server is not returning valid data. Please check for an updated version of Football Scores.</string>
+    <string name="empty_scores_list_invalid_location">No Football Scores information available. The location in settings is not recognized by the Football Scores server.</string>
+
 </resources>
